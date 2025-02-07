@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Bound</title>
+    <link rel="icon" href="https://imgs.search.brave.com/i5razvZ0Wj3UT7WW08mh2bH8FOH43s-B52Ese_5aEIU/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMudmV4ZWxzLmNv/bS9tZWRpYS91c2Vy/cy8zLzEyODg5NS9p/c29sYXRlZC9wcmV2/aWV3L2Y5Mjk4YjY2/M2FkMWU2NzE2ODBj/YWQyZWQ3MGIyMGMz/LXRpbWVyLXJlbG9h/ZC1mbGF0LWljb24u/cG5n">
+
+    <style>
+
+/* :root {
+            --primary: #0a0236;
+            --secondary: #666f6f;
+            --background: #cccfcf;
+            --text: #1f2937;
+            --text-light: #ffffff;
+            --gradiant : #323737;
+            --hover: #078e8e;
+        } */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family:'Gill Sans MT';
+        }
+
+        body {
+            background: #e4e7e9;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 80px;
+        }
+
+        .navbar {
+            background-color:#0a0236;
+            padding: 1rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-container {
+            display: flex;
+            justify-content:space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .navbar-logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            margin-right: 30px;
+        }
+
+        .navbar-logo img {
+            height: 50px;
+            margin-right: 0px;
+            margin-left: 0px;
+        }
+
+        .navbar-menu {
+            display: flex;
+            list-style-type: none;
+        }
+
+        .navbar-link {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+        }
+
+        .navbar-link:hover {
+            color: #20cdcd;
+        }
+
+        .navbar-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-light);
+            cursor: pointer;
+        }
+
+        .main-content {
+            width: 90%;
+            max-width: 600px;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 2rem;
+        }
+
+        .contact-form {
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+
+        .contact-form label {
+            display: block;
+            font-size: 1rem;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 0.75rem;
+            font-size: 1rem;
+            color: #333;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .contact-form button {
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            color: #ffffff;
+            background-color: #333;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+        }
+
+        .contact-form button:hover {
+            background-color: #078e8e;
+            transform:translateY(-3px);
+            transition:0.3s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+
+        }
+
+        .footer {
+            width: 100%;
+            padding: 1.5rem 2rem;
+            background: #0a0236;
+            color: #ffffff;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .footer p, .footer a {
+            font-size: 0.9rem;
+            color: #ffffff;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: #078e8e;
+            transition: 0.3s;
+        }
+
+    </style>
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="navbar-container">
+            <a href="E:\HTML\homepage(1).html" class="navbar-logo" aria-label="Time Bound Home">
+                <img src="C:\Users\asus\Downloads\Untitled design (3).png" alt="Time Bound Logo">
+                Time Bound
+            </a>
+            </button>
+            <ul class="navbar-menu" id="navbar-menu" role="menu">
+                <li class="navbar-item" role="menuitem"><a href="E:\HTML\homepage(1).html" class="navbar-link">Home</a></li>
+                <li class="navbar-item" role="menuitem"><a href="E:\HTML\project(timer).html" class="navbar-link">Countdown Timer</a></li>
+                <li class="navbar-item" role="menuitem"><a href="E:\HTML\project(stopwatch).html" class="navbar-link">Stopwatch</a></li>
+                <li class="navbar-item" role="menuitem"><a href="E:\HTML\alarm.html" class="navbar-link">Alarm</a></li>
+                <li class="navbar-item" role="menuitem"><a href="E:\HTML\birthday.html" class="navbar-link">Birthday Reminder</a></li>
+                <li class="navbar-item" role="menuitem"><a href="E:\HTML\aboutpage.html" class="navbar-link">About Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <header>
+            <h1>Contact Us</h1>
+            <p>We'd love to hear from you! Please fill out the form below and we’ll get back to you as soon as possible.</p>
+        </header>
+
+        <div class="contact-form">
+            <form method="POST">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">Message</label>
+                <textarea id="message" name="message" required></textarea>
+
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2024 Time Bound. All rights reserved.</p>
+        <p>Follow us on 
+            <a href="#">Facebook</a> | 
+            <a href="#">Twitter</a> | 
+            <a href="#">Instagram</a>
+        </p>
+    </footer>
+</body>
+</html>
+ 

@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Reminder - Time Bound</title>
+    <link rel="icon" href="https://imgs.search.brave.com/i5razvZ0Wj3UT7WW08mh2bH8FOH43s-B52Ese_5aEIU/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMudmV4ZWxzLmNv/bS9tZWRpYS91c2Vy/cy8zLzEyODg5NS9p/c29sYXRlZC9wcmV2/aWV3L2Y5Mjk4YjY2/M2FkMWU2NzE2ODBj/YWQyZWQ3MGIyMGMz/LXRpbWVyLXJlbG9h/ZC1mbGF0LWljb24u/cG5n">
+    <style>
+body {
+    font-family:'Gill Sans MT';
+    background-color: #f8f9fa;
+    color: #ffffff;
+    flex-direction: column;
+    min-height: 100vh;
+    padding-top: 80px;
+    margin: 0;
+    padding-top: 80px;
+}
+
+.container {
+    max-width: 500px; 
+    background: rgba(56, 55, 55, 0.944);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 1.5em 3.5em;
+    padding-left: 2.2em;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center; /* Center the content inside the container */
+}
+
+.form-group {
+    margin-bottom: 1.5em;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #078e8e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+button:hover {
+    background-color: #0a0236;
+}
+
+#submit-btn {
+    background-color: #078e8e;
+    transition: 0.3s;
+}
+
+#submit-btn:hover {
+    background-color: #0a0236;
+    transform: translateY(-3px);
+    transition: 0.3s;
+}
+
+#cancel-btn {
+    background-color: #c50f21;
+    display: none;
+    transition: 0.3s;
+}
+
+#cancel-btn:hover {
+    background-color: #800310;
+    transform: translateY(-3px);
+    transition: 0.3s;
+}
+
+.birthday-list {
+    margin-top: 2em;
+}
+
+.birthday-item {
+    background: #f1f1f1;
+    padding: 1em;
+    border-radius: 5px;
+    margin-bottom: 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #333;
+}
+
+.birthday-item:hover {
+    background: #e9ecef;
+}
+
+.birthday-date {
+    font-size: 1.1em;
+    color: #078e8e;
+}
+
+.days-remaining {
+    font-weight: bold;
+    color: #28a745;
+}
+
+.action-buttons button {
+    margin: 0 5px;
+    padding: 5px 10px;
+    font-size: 0.9rem;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.action-buttons button.btn-info {
+    background-color: #078e8e;
+    color: white;
+}
+
+.action-buttons button.btn-info:hover {
+    background-color: #0a0236;
+}
+
+.action-buttons button.btn-danger {
+    background-color: #c1071a;
+    color: white;
+}
+
+.action-buttons button.btn-danger:hover {
+    background-color: #70040f;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #0a0236;
+    padding: 10px 20px;
+    color: #fff;
+    z-index: 1000;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#logo {
+    height: 50px;
+    margin-left: 30px;
+}
+
+.logo-text {
+    font-size: 1.5em;
+    margin: 0;
+    color: #fff;
+}
+
+.navbar {
+    background-color: #0a0236;
+    padding: 1rem 2rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.navbar-logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--text-light);
+    text-decoration: none;
+}
+
+.navbar-logo img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.navbar-menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 1rem; /* Adds space between items */
+}
+
+.navbar-item {
+    display: inline-block;
+}
+
+.navbar-link {
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.navbar-link:hover {
+    background-color: var(--hover);
+    color: #20cdcd;
+}
+
+@media (max-width: 768px) {
+    .navbar-menu {
+        flex-direction: column;
+        background-color: var(--primary);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        display: none;
+        z-index: 999;
+    }
+
+    .navbar-menu.active {
+        display: flex;
+    }
+
+    .navbar-link {
+        text-align: center;
+        padding: 1rem;
+    }
+
+    .navbar-toggle {
+        display: block;
+        font-size: 1.5rem;
+        color: var(--text-light);
+        cursor: pointer;
+        background: none;
+        border: none;
+    }
+}
+
+
+#background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+    </style>
+</head>
+<body>
+    <video autoplay muted loop id="background-video">
+        <source src="C:\Users\asus\Downloads\bg vid.mp4"  type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <nav class="navbar">
+        <a href="E:\HTML\homepage(1).html" class="navbar-logo" label="Time Bound Home">
+            <img src="C:\Users\asus\Downloads\Untitled design (3).png" alt="Time Bound Logo">
+            Time Bound
+        </a>
+        <ul class="nav-links">
+            <li class="navbar-item" role="menuitem"><a href="E:\HTML\homepage(1).html" class="navbar-link">Home</a></li>
+            <li class="navbar-item" role="menuitem"><a href="E:\HTML\project(timer).html" class="navbar-link">Countdown Timer</a></li>
+            <li class="navbar-item" role="menuitem"><a href="E:\HTML\project(stopwatch).html" class="navbar-link">Stopwatch</a></li>
+            <li class="navbar-item" role="menuitem"><a href="E:\HTML\alarm.html" class="navbar-link">Alarm</a></li>
+            <li class="navbar-item" role="menuitem"><a href="E:\HTML\aboutpage.html" class="navbar-link">About Us</a></li>
+            <li class="navbar-item" role="menuitem"><a href="E:\HTML\contactpage.html" class="navbar-link">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <div class="container" style="margin-top: 80px;">
+        <h1 class="text-center">Birthday Reminders</h1>
+
+        <form id="birthday-form">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" placeholder="Enter Name" required>
+            </div>
+            <div class="form-group">
+                <label for="date">Birthday Date</label>
+                <input type="date" id="date" required>
+            </div>
+            <button type="submit" id="submit-btn">Add Birthday</button>
+            <button type="button" id="cancel-btn" style="display: none;">Cancel Edit</button>
+        </form>
+
+        <div class="birthday-list" id="birthday-list">
+            <h3 class="text-center mt-4">Upcoming Birthdays</h3>
+        </div>
+    </div>
+    <script>
+        const birthdayForm = document.getElementById('birthday-form');
+        const birthdayList = document.getElementById('birthday-list');
+        const submitBtn = document.getElementById('submit-btn');
+        const cancelBtn = document.getElementById('cancel-btn');
+        let birthdays = [];
+        let editIndex = null;
+
+        birthdayForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const date = document.getElementById('date').value;
+
+            if (editIndex !== null) {
+                updateBirthday(editIndex, name, date);
+            } else {
+                addBirthday(name, date);
+            }
+            birthdayForm.reset();
+            editIndex = null;
+            submitBtn.textContent = 'Add Birthday';
+            cancelBtn.style.display = 'none';
+        });
+
+        cancelBtn.addEventListener('click', function() {
+            editIndex = null;
+            birthdayForm.reset();
+            submitBtn.textContent = 'Add Birthday';
+            cancelBtn.style.display = 'none';
+        });
+
+        function addBirthday(name, date) {
+            birthdays.push({ name, date });
+            updateBirthdayList();
+        }
+
+        function updateBirthday(index, name, date) {
+            birthdays[index] = { name, date };
+            updateBirthdayList();
+        }
+
+        function updateBirthdayList() {
+            birthdayList.innerHTML = '<h3 class="text-center mt-4">Upcoming Birthdays</h3>';
+            birthdays.forEach((birthday, index) => {
+                const daysLeft = calculateDaysRemaining(birthday.date);
+                const birthdayItem = document.createElement('div');
+                birthdayItem.className = 'birthday-item';
+                birthdayItem.innerHTML = `
+                    <div>
+                        <strong>${birthday.name}</strong>
+                        <div class="birthday-date">${new Date(birthday.date).toLocaleDateString()}</div>
+                        <div class="days-remaining">${daysLeft} days left</div>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="btn btn-sm btn-info" onclick="editBirthday(${index})">Edit</button>
+                        <button class="btn btn-sm btn-danger" onclick="removeBirthday(${index})">Remove</button>
+                    </div>
+                `;
+                birthdayList.appendChild(birthdayItem);
+            });
+        }
+
+        function calculateDaysRemaining(date) {
+            const today = new Date();
+            const targetDate = new Date(date);
+            targetDate.setFullYear(today.getFullYear());
+            if (targetDate < today) targetDate.setFullYear(today.getFullYear() + 1);
+            const diffTime = targetDate - today;
+            return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        }
+
+        function editBirthday(index) {
+            const birthday = birthdays[index];
+            document.getElementById('name').value = birthday.name;
+            document.getElementById('date').value = birthday.date;
+            editIndex = index;
+            submitBtn.textContent = 'Save Changes';
+            cancelBtn.style.display = 'block';
+        }
+
+        function removeBirthday(index) {
+            birthdays.splice(index, 1);
+            updateBirthdayList();
+        }
+    </script>
+</body>
+</html>

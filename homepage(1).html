@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Bound - Your Ultimate Time Management Tool</title>
+    <style>
+        :root {
+            --primary: #0a0236;
+            --secondary: #666f6f;
+            --background: #e5e1e1;
+            --text: #1f2937;
+            --text-light: #ffffff;
+            --gradiant : #323737;
+            --hover:#20cdcd;;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family:'Gill Sans MT';
+            line-height: 1;
+            color: var(--text);
+            background-color: var(--background);
+        }
+
+        .navbar {
+            background-color: var(--primary);
+            padding: 1rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-container {
+            display: flex;
+            justify-content:space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .navbar-logo {
+            font-family:'Gill Sans MT';
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            margin-right: 30px;
+        }
+
+        .navbar-logo img {
+            height: 50px;
+            margin-right: 0px;
+            margin-left: 0px;
+        }
+
+        .navbar-menu {
+            display: flex;
+            list-style-type: none;
+        }
+
+        .navbar-link {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+        }
+
+        .navbar-link:hover {
+            color: #20cdcd;
+        }
+
+        .navbar-toggle {
+            font-family:'Gill Sans MT';
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-light);
+            cursor: pointer;
+        }
+
+        .hero {
+            background-image: url("C:/Users/asus/OneDrive/Desktop/1.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            color: var(--text-light);
+            text-align: center;
+            padding: 10rem 6rem 8rem;
+        }
+
+
+        .hero h1 {
+            font-family:'Gill Sans MT';
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero p {
+            font-family:'Gill Sans MT';
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--text-light);
+            color: var(--primary);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            background-color: var(--hover);
+            transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .features {
+            padding: 10rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 4rem;
+            color: var(--primary);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 2fr));
+            gap: 3rem;
+        }
+
+        .feature-card {
+            background-color: var(--text-light);
+            border-radius: 15px;
+            padding: 2.5rem;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-icon {
+            font-family:'Gill Sans MT';
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+        }
+
+        .feature-card h3 {
+            font-family:'Gill Sans MT';
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .feature-card .btn {
+            font-family:'Gill Sans MT';
+            background-color: var(--gradiant);
+            color: var(--text-light);
+            padding: 0.75rem 1.5rem;
+            margin-top: 1rem;
+            font-size: 1rem;
+        }
+
+        .feature-card .btn:hover{
+            background-color: var(--hover);
+            transition: 0.3s;
+        }
+
+        footer {
+            background-color: var(--primary);
+            color: var(--text-light);
+            padding: 1rem ;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links li {
+            margin:  1.2rem;
+        }
+
+        .footer-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--hover);
+        }
+
+    </style>
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+    <div class="navbar-container">
+        <a href="E:\HTML\homepage(1).html" class="navbar-logo" aria-label="Time Bound Home">
+            <img src="C:\Users\asus\Downloads\Untitled design (3).png" alt="Time Bound Logo">
+            Time Bound
+        </a>
+        </button>
+        <ul class="navbar-menu" id="navbar-menu" role="menu">
+            <li class="navbar-item" role="menuitem"><a href="E:\HTML\project(timer).html" class="navbar-link">Countdown Timer</a></li>
+            <li class="navbar-item" role="menuitem"><a href="E:\HTML\project(stopwatch).html" class="navbar-link">Stopwatch</a></li>
+            <li class="navbar-item" role="menuitem"><a href="E:\HTML\alarm.html" class="navbar-link">Alarm</a></li>
+            <li class="navbar-item" role="menuitem"><a href="E:\HTML\birthday.html" class="navbar-link">Birthday Reminder</a></li>
+            <li class="navbar-item" role="menuitem"><a href="E:\HTML\aboutpage.html" class="navbar-link">About</a></li>
+            <li class="navbar-item" role="menuitem"><a href="E:\HTML\contactpage.html" class="navbar-link">Contact Us</a></li>
+        </ul>
+    </div>
+</nav>
+
+    <main>
+        <section id="home" class="hero">
+            <h1>Master Your Time with Time Bound</h1>
+            <p>Elevate your productivity and never miss a beat with our comprehensive suite of time management tools.</p>
+            <a href="#features" class="btn">Get Started</a>
+        </section>
+
+        <section id="features" class="features">
+            <h2>Powerful Time Management Tools</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">⏱</div>
+                    <h3>Countdown Timer</h3>
+                    <p>Set precise countdowns for tasks and events, boosting your focus and productivity.</p>
+                    <a href="E:\HTML\project(timer).html" class="btn">Use Timer</a>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⏳</div>
+                    <h3>Stopwatch</h3>
+                    <p>Track time with millisecond accuracy for sports, cooking, or any timed activity.</p>
+                    <a href="E:\HTML\project(stopwatch).html" class="btn">Use Stopwatch</a>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⏰</div>
+                    <h3>Alarm</h3>
+                    <p>Set multiple alarms with custom sounds to keep your schedule on track.</p>
+                    <a href="E:\HTML\alarm.html" class="btn">Set Alarm</a>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎂</div>
+                    <h3>Birthday Reminder</h3>
+                    <p>Never forget a birthday again with our smart reminder system.</p>
+                    <a href="E:\HTML\birthday.html9" class="btn">Set Reminders</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Time Bound. All rights reserved. </p>
+        <p class="footer-links">
+            Follow us on 
+            <a href="https://www.facebook.com/">Facebook</a> | 
+            <a href="https://www.x.com/">Twitter</a> | 
+            <a href="https://www.instagram.com/">Instagram</a>
+        </p>
+    </footer>
+
+</body>
+</html>

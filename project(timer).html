@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Bound</title>
+    <link rel="icon" href="https://imgs.search.brave.com/i5razvZ0Wj3UT7WW08mh2bH8FOH43s-B52Ese_5aEIU/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMudmV4ZWxzLmNv/bS9tZWRpYS91c2Vy/cy8zLzEyODg5NS9p/c29sYXRlZC9wcmV2/aWV3L2Y5Mjk4YjY2/M2FkMWU2NzE2ODBj/YWQyZWQ3MGIyMGMz/LXRpbWVyLXJlbG9h/ZC1mbGF0LWljb24u/cG5n">
+</head>
+<style>
+    body {
+    font-family:'Gill Sans MT';
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(to bottom,rgb(63, 93, 193) ,rgb(22, 9, 84) );
+    background-size: cover;
+    color: white;
+}
+
+
+.countdown-container {
+    text-align: center;
+    background-color: rgba(49, 44, 44, 0.752);
+    padding: 50px;
+    padding-top: 10px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    margin-bottom: 1em;
+    font-size: 2.5em;
+}
+
+.countdown-timer {
+    display: flex;
+    gap: 1em;
+    margin: 1em 0;
+}
+
+.time-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.circle {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 100%;
+    padding: 1em;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.time-number {
+    font-size: 2em;
+}
+
+.time-text {
+    font-size: 1em;
+    color: #0ebbbb;
+}
+
+.progress-bar {
+    width: 80%;
+    background: rgba(255, 255, 255, 0.1);
+    margin: 1em auto;
+}
+
+.progress {
+    width: 0%; 
+    height: 10px;
+    background: #0ebbbb;;
+}
+
+.buttons {
+    padding-top: 40px;
+}
+
+input[type="text"], 
+input[type="datetime-local"],
+select {
+    padding: 0.5em;
+    border: none;
+    border-radius: 5px;
+    margin: 0.5em 0;
+    width: 80%;
+    font-size: 1em;
+    color: white;
+}
+select{
+    width:83%
+}
+
+#event-date{
+    background-color: #685e5b96;
+}
+button {
+    padding: 0.5em 1em;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    background-color:#0ebbbb;;
+    color: white;
+    font-size: 1em;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.img{
+    padding: 10px;
+    padding-bottom: 0px;
+}
+
+button:hover {
+    background-color: #0a0236;
+    transform: translateY(-3px);
+    transition:0.3s;
+}
+
+button:active {
+    background-color: #007bff; 
+}
+#event-name{
+    background-color: #685e5b96;
+}
+
+#event-name::placeholder{
+    color: white;
+}
+
+#select{
+    background-color: #685e5b96;
+}
+
+#select::placeholder{
+    color: white;
+}
+
+.navbar {
+            background-color:#0a0236;
+            padding: 1rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-container {
+            display: flex;
+            justify-content:space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .navbar-logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            margin-right: 30px;
+        }
+
+        .navbar-logo img {
+            height: 50px;
+            margin-right: 0px;
+            margin-left: 0px;
+        }
+
+        .navbar-menu {
+            display: flex;
+            list-style-type: none;
+        }
+
+        .navbar-link {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+        }
+
+        .navbar-link:hover {
+            color: #20cdcd;
+        }
+
+        .navbar-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-light);
+            cursor: pointer;
+        }
+
+.countdown-container {
+    margin-top: 70px;
+}
+#background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+</style>
+<body>
+    <video autoplay muted loop id="background-video">
+        <source src="C:\Users\asus\Downloads\bg vid.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <nav class="navbar" id="navbar">
+        <div class="navbar-container">
+            <a href="E:\HTML\homepage(1).html" class="navbar-logo" aria-label="Time Bound Home">
+                <img src="C:\Users\asus\Downloads\Untitled design (3).png" alt="Time Bound Logo">
+                Time Bound
+            </a>
+            </button>
+            <ul class="navbar-menu" id="navbar-menu" role="menu">
+                <li class="navbar-item" role="menuitem"><a href="E:\HTML\homepage(1).html" class="navbar-link">Home</a></li>
+                <li class="navbar-item" role="menuitem"><a href="E:\HTML\project(stopwatch).html" class="navbar-link">Stopwatch</a></li>
+                <li class="navbar-item" role="menuitem"><a href="E:\HTML\alarm.html" class="navbar-link">Alarm</a></li>
+                <li class="navbar-item" role="menuitem"><a href="E:\HTML\birthday.html" class="navbar-link">Birthday Reminder</a></li>
+                <li class="navbar-item" role="menuitem"><a href="E:\HTML\aboutpage.html" class="navbar-link">About Us</a></li>
+                <li class="navbar-item" role="menuitem"><a href="E:\HTML\contactpage.html" class="navbar-link">Contact Us</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="countdown-container">
+        <h1>COUNTDOWN TIMER</h1>
+        <div class="countdown-timer">
+            <div class="time-box">
+                <div class="circle">
+                    <span class="time-number" id="days">00</span>
+                   <b><span class="time-text">DAYS</span></b>
+                </div>
+            </div>
+            <div class="time-box">
+                <div class="circle">
+                    <span class="time-number" id="hours">00</span>
+                   <b><span class="time-text">HOURS</span></b>
+                </div>
+            </div>
+            <div class="time-box">
+                <div class="circle">
+                    <span class="time-number" id="minutes">00</span>
+                    <b><span class="time-text">MINUTES</span></b>
+                </div>
+            </div>
+            <div class="time-box">
+                <div class="circle">
+                    <span class="time-number" id="seconds">00</span>
+                    <b><span class="time-text">SECONDS</span></b>
+                </div>
+            </div>
+        </div>
+        <div class="progress-bar">
+            <div class="progress" id="progress"></div>
+        </div>
+        <div class="buttons">
+            <select id="select">
+                <option value="none">-Select event-</option>
+                <option value="birthday party">Birthday party</option>
+                <option value="Fresher Party">Fresher Party</option>
+                <option value="Rangrezz">Rangrezz</option>
+                <option value="aniversary">Aniversary</option>
+                <option value="Scavenger Hunt">Scavenger Hunt</option>
+                <option value="Diwali">Diwali</option>
+                <option value="Dussehra">Dussehra</option>
+                <option value="Holi">Holi</option>
+                <option value="Gurupurab">Gurupurab</option>
+                <option value="New Year">New Year</option>
+                <option value="world Students Day">World Students Day</option>
+                <option value="Sports Day">Sports Day</option>
+                <option value="Teachers day">Teachers Day</option>
+                <option value="others">Others</option>
+                <br><br>
+            </select>
+            <input type="text" id="event-name" placeholder="Enter Event">
+            <br>
+            <input type="datetime-local" id="event-date">
+            <br><br>
+            <button id="start-timer">Start Timer</button>
+            <button id="stop-timer">Stop Timer</button>
+            <button id="reset">Reset</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+    const daysElement = document.getElementById('days');
+    const hoursElement = document.getElementById('hours');
+    const minutesElement = document.getElementById('minutes');
+    const secondsElement = document.getElementById('seconds');
+    const progressElement = document.getElementById('progress');
+    const startButton = document.getElementById('start-timer');
+    const stopButton = document.getElementById('stop-timer');
+    const resetButton = document.getElementById('reset');
+    const eventNameInput = document.getElementById('event-name');
+    const eventDateInput = document.getElementById('event-date');
+    const eventSelect = document.getElementById('select');
+
+    let countdownInterval = null;
+    let startingTime = null;
+
+    function updateCountdown() {
+        const eventDate = new Date(eventDateInput.value);
+        const currentTime = new Date();
+
+        if (!startingTime) startingTime = currentTime;
+
+        const totalDuration = eventDate - startingTime; 
+        const timeElapsed = currentTime - startingTime;
+        const timeDifference = eventDate - currentTime; 
+
+        if (timeDifference <= 0) {
+            clearInterval(countdownInterval);
+            daysElement.textContent = '00';
+            hoursElement.textContent = '00';
+            minutesElement.textContent = '00';
+            secondsElement.textContent = '00';
+            progressElement.style.width = '100%';
+            alert('The countdown has ended!');
+            return;
+        }
+
+        const totalSeconds = Math.floor(timeDifference / 1000);
+        const days = Math.floor(totalSeconds / 86400);
+        const hours = Math.floor((totalSeconds % 86400) / 3600);
+        const minutes = Math.floor((totalSeconds % 3600) / 60);
+        const seconds = totalSeconds % 60;
+
+        daysElement.textContent = days.toString().padStart(2, '0');
+        hoursElement.textContent = hours.toString().padStart(2, '0');
+        minutesElement.textContent = minutes.toString().padStart(2, '0');
+        secondsElement.textContent = seconds.toString().padStar
+        t(2, '0');
+
+        const progressPercentage = (timeElapsed / totalDuration) * 100;
+        progressElement.style.width = `${progressPercentage}%`;
+    }
+
+    startButton.addEventListener('click', () => {
+        const eventName = eventNameInput.value.trim();
+        const eventDate = eventDateInput.value;
+
+        if (!eventName || !eventDate) {
+            alert('Please select an event and enter a valid date.');
+            return;
+        }
+
+        if (new Date(eventDate) <= new Date()) {
+            alert('Please select a future date.');
+            return;
+        }
+
+        clearInterval(countdownInterval); 
+        startingTime = null; 
+        updateCountdown(); 
+        countdownInterval = setInterval(updateCountdown, 1000); 
+    });
+
+
+    stopButton.addEventListener('click', () => {
+        clearInterval(countdownInterval);
+    });
+
+
+    resetButton.addEventListener('click', () => {
+        clearInterval(countdownInterval);
+        startingTime = null; 
+        daysElement.textContent = '00';
+        hoursElement.textContent = '00';
+        minutesElement.textContent = '00';
+        secondsElement.textContent = '00';
+        progressElement.style.width = '0%';
+        eventNameInput.value = '';
+        eventDateInput.value = '';
+        eventSelect.value = 'none';
+    });
+
+    eventSelect.addEventListener('change', () => {
+        if (eventSelect.value === 'none') {
+            eventNameInput.value = '';
+        } else {
+            eventNameInput.value = eventSelect.value;
+        }
+    });
+});
+
+
+    </script>
+</body>
+</html>
